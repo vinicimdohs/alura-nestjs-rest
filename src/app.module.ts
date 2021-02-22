@@ -1,5 +1,7 @@
 import { Module } from '@nestjs/common';
-import { SequelizeModule } from '@nestjs/sequelize';
+import { ConfigModule } from '@nestjs/config';
+import { SequelizeModule } from '@nestjs/sequelize/dist/sequelize.module';
+
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -9,13 +11,14 @@ import { ProdutosService } from './produtos.service';
 
 @Module({
   imports: [
+    ConfigModule.forRoot(),
     SequelizeModule.forRoot({
       dialect: 'mysql',
       host: 'localhost',
       port: 3306,
-      username: 'root',
-      password: 'admlinux',
-      database: 'livraria',
+      username: process.env.USER_BD,
+      password: process.env.SENHA_BD,
+      database: process.env.NAME_BD,
       autoLoadModels: true,
       synchronize: true,
     }),

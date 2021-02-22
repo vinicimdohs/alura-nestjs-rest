@@ -1,4 +1,4 @@
-import { Table,Model, Column, DataType } from "sequelize-typescript";
+import { Table, Model, Column, DataType } from "sequelize-typescript";
 
 @Table
 export class Produto extends Model<Produto>{
@@ -9,13 +9,11 @@ export class Produto extends Model<Produto>{
     })
     codigo: string;
 
-
     @Column({
         type: DataType.STRING,
         allowNull: false,
     })
     nome: string;
-
 
     @Column({
         type: DataType.DECIMAL(10, 2),
